@@ -5,16 +5,30 @@ package projetopoomercado;
 public class Projetopoomercado {
 
     public static void main(String[] args) {
-        Sistema sistema = new Sistema();
-        Produto produto1 = new Produto("refrigerante", "9888", "coca cola", 20.0, "bebida", "20/02/2020");
-        sistema.cadastrar(produto1);
-        Produto produto2 = new Produto("bolacha de flocos", "9889", "richester", 15.0, "comida", "20/02/2020");
-        sistema.cadastrar(produto2);
         
-        sistema.adicionar_estoque("9888", 5);
-        sistema.adicionar_estoque("9888", 4);
-        sistema.adicionar_estoque("9889", 2);
+        IEstoque estoque = new Estoque();
+        Gerente gerente = new Gerente(estoque, "rodrigo", "jrodri", "hahaha");
+        gerente.iniciarSaldo(100.0);
         
-        System.out.println(sistema.toString());
+        Produto produto1 = new ProdutoComestivel("refrigerante", "9888", "coca cola", 20.0, "bebida", "20/07/2023");
+        Produto produto2 = new ProdutoComestivel("bolacha de flocos", "9889", "richester", 15.0, "comida", "07/02/2025");
+   
+        gerente.cadastrar(produto1, 5, 1.2);
+        
+        Vendedor vendedor = new Vendedor(estoque, "joao", "joaozin", "susu");
+        
+        vendedor.vender_debito("9888", 3);
+        gerente.adicionar(produto1, 3);
+        vendedor.vender_dinheiro("9888", 120.0, 5);
+        gerente.cadastrar(produto2, 3, 1.1);
+        vendedor.vender_credito("9889", 2, 2);
+        
+       
+    
+        
+       
+        
+        
+        
     }
 }
