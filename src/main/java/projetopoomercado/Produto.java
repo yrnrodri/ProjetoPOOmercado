@@ -4,34 +4,39 @@ package projetopoomercado;
 
 public class Produto {
     //atributos
-     private String nome;
-    private String id;
-    private String marca;
-    private double preco;
-    private String tipo;
-    private String validade;
-    private int quantidade;
-
+    protected String nome;
+    protected String id;
+    protected String marca;
+    protected double preco_compra;
+    protected double precoVenda;
+    protected String tipo;  
+    protected int quantidade;
+    protected double taxaLucro;
+   
     //construtor
-    public Produto(String nome, String id, String marca, double preco, String tipo, String validade) {
+    public Produto(String nome, String id, String marca, double preco_compra, String tipo) {
         this.nome = nome;
         this.id = id;
         this.marca = marca;
-        this.preco = preco;
+        this.preco_compra = preco_compra;
+        this.precoVenda = 0.0;
         this.tipo = tipo;
-        this.validade = validade;
         this.quantidade = 0; //setei como 0 porque so vamos controlar a quantidade quando for adicionar no estoque
+        this.taxaLucro = 0.0;
     }
-
+  
+    
+    
     @Override
     public String toString() {
         return "Produto{" + "nome=" + nome + ", id=" + id + ", marca=" + marca +
-                ", preco=" + preco + 
-                ", tipo=" + tipo + 
-                ", validade=" + validade + ", quantidade=" + quantidade + '}';
+                ", preco=" + preco_compra + ", tipo=" + tipo +
+                ", quantidade=" + quantidade + '}';
     }
-        
    
+        
+   /////getters e setters
+    
 
     public String getNome() {
         return nome;
@@ -57,13 +62,14 @@ public class Produto {
         this.marca = marca;
     }
 
-    public double getPreco() {
-        return preco;
+    public double getPreco_compra() {
+        return preco_compra;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public void setPreco_compra(double preco_compra) {
+        this.preco_compra = preco_compra;
     }
+
 
     public String getTipo() {
         return tipo;
@@ -73,13 +79,6 @@ public class Produto {
         this.tipo = tipo;
     }
 
-    public String getValidade() {
-        return validade;
-    }
-
-    public void setValidade(String validade) {
-        this.validade = validade;
-    }
 
     public int getQuantidade() {
         return quantidade;
@@ -88,6 +87,26 @@ public class Produto {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
+
+    public double getTaxaLucro() {
+        return taxaLucro;
+    }
+
+    public void setTaxaLucro(double taxaLucro) {
+        this.taxaLucro = taxaLucro;
+    }
+
+    public double getPrecoVenda() {
+        return precoVenda;
+    }
+
+    public void setprecoVenda(double precoVenda) {
+        this.precoVenda = precoVenda;
+    }
+
+   
+    
+
     
     
 }
