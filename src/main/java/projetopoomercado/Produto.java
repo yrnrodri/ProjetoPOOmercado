@@ -21,7 +21,7 @@ public class Produto {
         this.preco_compra = preco_compra;
         this.precoVenda = 0.0;
         this.tipo = tipo;
-        this.quantidade = 0; //setei como 0 porque so vamos controlar a quantidade quando for adicionar no estoque
+        this.quantidade = 0; 
         this.taxaLucro = 0.0;
     }
   

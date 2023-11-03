@@ -51,6 +51,10 @@ public class Gerente extends Funcionario {
         }
             
     }
+      
+      public void verEstoque(String tipo){
+          this.estoque.mostrarEstoque(tipo);
+      }
           
 public void registrarCompra(ProdutoHistorico produto){
           if(produto != null){

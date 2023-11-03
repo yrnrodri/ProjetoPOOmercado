@@ -64,10 +64,10 @@ public class Estoque implements IEstoque {
         for(Produto produto : estoque){
             if(produto.getTipo().equals(tipo)){
                 if(produto instanceof ProdutoComestivel){
-                System.out.println(((ProdutoComestivel) produto).CustomtoString());
+                    System.out.println(((ProdutoComestivel) produto).CustomtoString());
                 }
-                else if(produto instanceof ProdutoNaoComestivel){
-                     System.out.println(produto.toString());
+                else{
+                    System.out.println(produto.toString());
                 }
             }
         }
