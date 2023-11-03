@@ -1,7 +1,10 @@
 
-package projetopoomercado;
+package projetopoomercado.usuarios;
 
 import java.util.Vector;
+import projetopoomercado.estoques.IEstoque;
+import projetopoomercado.produtos.Produto;
+import projetopoomercado.produtos.ProdutoHistorico;
 
 
 public class Gerente extends Funcionario {
@@ -77,7 +80,7 @@ public void registrarCompra(ProdutoHistorico produto){
          }
          double balanco = ganho - perda;
          System.out.println("Saiu: " + perda + " " + "Entrou: " + ganho);
-         System.out.println("Balanço final: " + balanco);
+         System.out.printf("Balanço final: $%.2f\n", balanco);
       }
     
     public void iniciarSaldo(double valor){

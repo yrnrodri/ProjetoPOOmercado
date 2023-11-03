@@ -1,6 +1,5 @@
 
-package projetopoomercado;
-
+package projetopoomercado.produtos;
 
 public class ProdutoNaoComestivel extends Produto {
     

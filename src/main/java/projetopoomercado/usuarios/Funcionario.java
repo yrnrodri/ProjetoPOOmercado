@@ -1,6 +1,7 @@
 
-package projetopoomercado;
+package projetopoomercado.usuarios;
 
+import projetopoomercado.estoques.IEstoque;
 
 public abstract class Funcionario {
     

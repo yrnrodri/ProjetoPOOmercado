@@ -1,7 +1,8 @@
 
-package projetopoomercado;
+package projetopoomercado.estoques;
 
-        
+import projetopoomercado.produtos.Produto;
+
 public interface IEstoque {
     
     

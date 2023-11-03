@@ -1,7 +1,10 @@
 
-package projetopoomercado;
+package projetopoomercado.estoques;
 
 import java.util.Vector;
+
+import projetopoomercado.produtos.Produto;
+import projetopoomercado.produtos.ProdutoComestivel;
 
 
 public class Estoque implements IEstoque {

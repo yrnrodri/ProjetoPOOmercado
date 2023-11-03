@@ -1,6 +1,9 @@
 
-package projetopoomercado;
+package projetopoomercado.usuarios;
 
+import projetopoomercado.estoques.IEstoque;
+import projetopoomercado.produtos.Produto;
+import projetopoomercado.produtos.ProdutoHistorico;
 
 public class Vendedor extends Funcionario {
     

@@ -1,6 +1,11 @@
+package projetopoomercado.application;
 
-
-package projetopoomercado;
+import projetopoomercado.estoques.Estoque;
+import projetopoomercado.estoques.IEstoque;
+import projetopoomercado.produtos.Produto;
+import projetopoomercado.produtos.ProdutoComestivel;
+import projetopoomercado.usuarios.Gerente;
+import projetopoomercado.usuarios.Vendedor;
 
 public class Projetopoomercado {
 
@@ -21,9 +26,13 @@ public class Projetopoomercado {
         gerente.adicionar(produto1, 3);
         vendedor.vender_dinheiro("9888", 120.0, 5);
         gerente.cadastrar(produto2, 3, 1.1);
-        vendedor.vender_credito("9889", 2, 2);
+        vendedor.vender_credito("9889", 3, 2);
+
+
+        gerente.verBalanco();
+        gerente.verEstoque("comida");
+        System.out.println("hello");
         
-       
     
         
        

@@ -1,5 +1,5 @@
 
-package projetopoomercado;
+package projetopoomercado.produtos;
 
 
 public class Produto {
