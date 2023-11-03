@@ -1,8 +1,6 @@
 
 package projetopoomercado;
 
-import java.util.Vector;
-
 
 public class ProdutoHistorico {
     private String idVenda;
