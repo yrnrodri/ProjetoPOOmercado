@@ -4,7 +4,7 @@ package projetopoomercado.usuarios;
 import projetopoomercado.estoques.IEstoque;
 
 public abstract class Funcionario {
-    
+  //atributos  
     protected String login;
     protected String senha;
     protected String nome;
