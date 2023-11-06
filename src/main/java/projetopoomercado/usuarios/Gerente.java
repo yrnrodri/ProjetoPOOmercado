@@ -2,6 +2,7 @@
 package projetopoomercado.usuarios;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Vector;
 import projetopoomercado.estoques.IEstoque;
 import projetopoomercado.produtos.Produto;
@@ -67,11 +68,13 @@ public void registrarCompra(ProdutoHistorico produto){
           }
 }
     
-    public void verBalancoData(LocalDate data){
+    public void verBalancoData(String data){
           double ganho = 0.0;
           double perda = 0.0;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(data, formatter);
          for(ProdutoHistorico produto : Gerente.produtoHist){
-            if(data.equals(produto.getData())){
+            if(localDate.equals(produto.getData())){
              System.out.println(produto);
              if(produto.getForma() == "Venda"){
              ganho += produto.getPreco();

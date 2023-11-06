@@ -25,9 +25,10 @@ public class Projetopoomercado {
         Vendedor vendedor = new Vendedor(estoque, "joao", "joaozin", "susu");
         
         vendedor.venderDebito("9888", 3);    
-        gerente.verBalancoTotal();
+        gerente.verBalancoData("2023-11-05");
  
         
     
+
     }
 }
