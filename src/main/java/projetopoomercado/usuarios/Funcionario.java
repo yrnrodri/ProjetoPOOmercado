@@ -10,7 +10,7 @@ public abstract class Funcionario {
     protected String nome;
     protected IEstoque estoque;
    
-    
+    //construtor
     public Funcionario(IEstoque estoque, String nome, String login, String senha){
         this.estoque = estoque;
         this.nome = nome;
@@ -20,7 +20,7 @@ public abstract class Funcionario {
     }
 
    
-
+//getters e setters
     public String getLogin() {
         return login;
     }
