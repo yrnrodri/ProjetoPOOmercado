@@ -1,9 +1,11 @@
 package projetopoomercado.produtos;
 
 public class ProdutoComestivel extends Produto {
-    
+
+    //atributos
       private String validade;
-    
+
+    //construtor
     public ProdutoComestivel(String nome, String id, String marca, double preco_compra, String tipo, String validade) {
         super(nome, id, marca, preco_compra, tipo);
         this.quantidade = 0;
@@ -12,6 +14,7 @@ public class ProdutoComestivel extends Produto {
         this.precoVenda = 0.0;
     }
 
+    //to string mas dessa vez mostrando a data de validade
     public String CustomtoString() {
         return "Produto{" + "nome=" + nome + ", id=" + id + ", marca=" + marca +
                 ", preco=" + preco_compra + ", tipo=" + tipo +
