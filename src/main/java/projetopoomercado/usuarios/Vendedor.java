@@ -14,7 +14,7 @@ public class Vendedor extends Funcionario {
         this.taxaCredito = 1.2;
     }
     
-     public void vender_dinheiro(String id, double valor, int quantidade){
+     public void venderDinheiro(String id, double valor, int quantidade){
         Produto produto = this.estoque.procurar(id);
         if(produto != null){
             double valorTotal = quantidade * produto.getPrecoVenda();
@@ -44,7 +44,7 @@ public class Vendedor extends Funcionario {
       
     }
      
-     public void vender_credito(String id, int quantidade, int parcelas){
+     public void venderCredito(String id, int quantidade, int parcelas){
         Produto produto = this.estoque.procurar(id);
         if(produto != null){
             if(quantidade <= produto.getQuantidade()){
@@ -60,7 +60,7 @@ public class Vendedor extends Funcionario {
         }
     }
      
-      public void vender_debito(String id, int quantidade){
+      public void venderDebito(String id, int quantidade){
         Produto produto = this.estoque.procurar(id);
         if(produto != null){
             if(quantidade <= produto.getQuantidade()){
@@ -68,7 +68,8 @@ public class Vendedor extends Funcionario {
             this.estoque.definirSaldo(this.estoque.verSaldo() + valorTotal);
             this.estoque.reduzir(produto, quantidade);
             ProdutoHistorico produtoHistorico = new ProdutoHistorico(produto.getId(), valorTotal, quantidade);
-            this.registrarVenda(produtoHistorico);
+            this.registrarVenda(produtoHistorico);      
+            this.notaFiscal(produtoHistorico);
             }
             else{
                 System.out.println("Sem produtos o suficiente no estoque.");
@@ -87,6 +88,10 @@ public class Vendedor extends Funcionario {
           }
       }
       
+      public void notaFiscal(ProdutoHistorico produto){
+            System.out.println("Nota fiscal: " + produto);
+
+      }
       
-    //oi 
+
 }

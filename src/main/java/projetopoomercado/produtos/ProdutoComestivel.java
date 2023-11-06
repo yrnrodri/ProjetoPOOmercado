@@ -1,4 +1,3 @@
-
 package projetopoomercado.produtos;
 
 public class ProdutoComestivel extends Produto {
@@ -7,7 +6,7 @@ public class ProdutoComestivel extends Produto {
     
     public ProdutoComestivel(String nome, String id, String marca, double preco_compra, String tipo, String validade) {
         super(nome, id, marca, preco_compra, tipo);
-        this.quantidade = 0; //setei como 0 porque so vamos controlar a quantidade quando for adicionar no estoque
+        this.quantidade = 0;
         this.validade = validade;
         this.taxaLucro = 0.0;
         this.precoVenda = 0.0;

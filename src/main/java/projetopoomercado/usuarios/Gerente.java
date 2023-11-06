@@ -1,6 +1,7 @@
 
 package projetopoomercado.usuarios;
 
+import java.time.LocalDate;
 import java.util.Vector;
 import projetopoomercado.estoques.IEstoque;
 import projetopoomercado.produtos.Produto;
@@ -66,7 +67,26 @@ public void registrarCompra(ProdutoHistorico produto){
           }
 }
     
-    public void verBalanco(){
+    public void verBalancoData(LocalDate data){
+          double ganho = 0.0;
+          double perda = 0.0;
+         for(ProdutoHistorico produto : Gerente.produtoHist){
+            if(data.equals(produto.getData())){
+             System.out.println(produto);
+             if(produto.getForma() == "Venda"){
+             ganho += produto.getPreco();
+             }
+             else{
+                 perda += produto.getPreco();
+             }
+            }
+         }
+         double balanco = ganho - perda;
+         System.out.println("Saiu: " + perda + " " + "Entrou: " + ganho);
+         System.out.printf("Balanço final: $%.2f\n", balanco);
+      }
+
+    public void verBalancoTotal(){
           double ganho = 0.0;
           double perda = 0.0;
          for(ProdutoHistorico produto : Gerente.produtoHist){
@@ -77,11 +97,15 @@ public void registrarCompra(ProdutoHistorico produto){
              else{
                  perda += produto.getPreco();
              }
+            
          }
          double balanco = ganho - perda;
          System.out.println("Saiu: " + perda + " " + "Entrou: " + ganho);
          System.out.printf("Balanço final: $%.2f\n", balanco);
+         System.out.println("Saldo do mercado: " + this.estoque.verSaldo());
+         
       }
+
     
     public void iniciarSaldo(double valor){
         this.estoque.definirSaldo(valor);

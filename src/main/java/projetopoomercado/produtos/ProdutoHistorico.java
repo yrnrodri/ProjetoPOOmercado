@@ -1,19 +1,24 @@
-
 package projetopoomercado.produtos;
 
+import java.time.LocalDate;
 
 public class ProdutoHistorico {
+    //Atributos
     private String idVenda;
     private double preco;
     private int quantidadeVendida;
     private String forma;
+    private LocalDate data;
 
+    //Construtor
     public ProdutoHistorico(String idVenda, double preco, int quantidadeVendida) {
         this.idVenda = idVenda;
         this.preco = preco;
         this.quantidadeVendida = quantidadeVendida;
+        this.data = LocalDate.now();
     }
-
+    
+    //Métodos
     public String getIdVenda() {
         return idVenda;
     }
@@ -46,12 +51,18 @@ public class ProdutoHistorico {
         this.forma = forma;
     }
 
+
     @Override
     public String toString() {
-        return "ProdutoHistorico{" + "idVenda=" + idVenda + ", preco=" + preco + ", quantidadeVendida=" + quantidadeVendida + ", forma=" + forma + '}';
+        return "Produto: [ID=" + idVenda + ", preço=" + preco + ", quantidade=" + quantidadeVendida
+                + ", forma=" + forma + ", data=" + data + "]";
     }
+
+    public LocalDate getData() {
+        return data;
+    }
+
     
-    
-    
+
     
 }
