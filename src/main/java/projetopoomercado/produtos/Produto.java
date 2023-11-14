@@ -1,6 +1,11 @@
 
 package projetopoomercado.produtos;
 
+import projetopoomercado.excecao.TLNException;
+import projetopoomercado.excecao.TLNUException;
+import projetopoomercado.excecao.QIException;
+import projetopoomercado.excecao.PCNUException;
+import projetopoomercado.excecao.PCNException;
 
 public class Produto {
     //atributos
@@ -8,7 +13,7 @@ public class Produto {
     protected String id;
     protected String marca;
     protected double preco_compra;
-    protected double precoVenda;
+    protected double preco_venda;
     protected String tipo;  
     protected int quantidade;
     protected double taxaLucro;
@@ -19,7 +24,7 @@ public class Produto {
         this.id = id;
         this.marca = marca;
         this.preco_compra = preco_compra;
-        this.precoVenda = 0.0;
+        this.preco_venda = 0.0;
         this.tipo = tipo;
         this.quantidade = 0; 
         this.taxaLucro = 0.0;
@@ -34,7 +39,14 @@ public class Produto {
                 ", quantidade=" + quantidade + '}';
     }
    
-        
+    // **teste
+    public boolean testeQuantidade(String Id,double quantidade_requerida) throws QIException{
+        if(this.getQuantidade() >= quantidade_requerida)
+            return true;
+        else
+            throw new QIException(Id, this.getQuantidade(), quantidade_requerida);
+    } 
+
    /////getters e setters
     
 
@@ -66,10 +78,14 @@ public class Produto {
         return preco_compra;
     }
 
-    public void setPreco_compra(double preco_compra) {
-        this.preco_compra = preco_compra;
+    public void setprecoCompra(double preco_compra) throws PCNUException, PCNException{
+        if(preco_compra>0)
+            this.preco_compra = preco_compra;
+       else if(preco_compra ==0)
+            throw new PCNUException();
+        else
+            throw new PCNException(preco_compra);
     }
-
 
     public String getTipo() {
         return tipo;
@@ -88,20 +104,25 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-    public double getTaxaLucro() {
+    public double getTaxaLucro(){
         return taxaLucro;
     }
-
-    public void setTaxaLucro(double taxaLucro) {
-        this.taxaLucro = taxaLucro;
+    // **coloquei as excecoes**
+    public void setTaxaLucro(double taxaLucro) throws TLNUException, TLNException {
+        if(taxaLucro>0.0)
+            this.taxaLucro = taxaLucro;
+        else if(taxaLucro==0.0)
+            throw new TLNUException(this.taxaLucro);
+        else if(taxaLucro<0.0)
+            throw new TLNException(this.taxaLucro);
     }
 
     public double getPrecoVenda() {
-        return precoVenda;
+        return preco_venda;
     }
 
-    public void setprecoVenda(double precoVenda) {
-        this.precoVenda = precoVenda;
+    public void setPrecoVenda(double preco_venda) {
+        this.preco_venda = preco_venda;
     }
 
    

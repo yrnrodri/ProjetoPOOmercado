@@ -3,8 +3,14 @@ package projetopoomercado.estoques;
 
 import java.util.Vector;
 
+
 import projetopoomercado.produtos.Produto;
 import projetopoomercado.produtos.ProdutoComestivel;
+import projetopoomercado.excecao.VNException;
+import projetopoomercado.excecao.SIException;
+import projetopoomercado.excecao.SNException;
+//import projetopoomercado.excecao.PIException;
+
 
 
 public class Estoque implements IEstoque {
@@ -12,6 +18,8 @@ public class Estoque implements IEstoque {
     //atributos
     private Vector<Produto> estoque;
     private double saldo;
+    //**teste**
+    
 
     //construtor
     public Estoque(){
@@ -20,19 +28,20 @@ public class Estoque implements IEstoque {
       
     }
    
-    //metodo para inserir produtos no estoque    
+    //metodo para inserir produtos no estoque  
+    // **nao precisa de excecao(eu acho) **
     @Override
     public void inserir(Produto produto, int quantidade){
         if(produto != null){
-                 if(!this.existe(produto.getId())){ //checa se o produto não existe no estoque
+                if(!this.existe(produto.getId())){ //checa se o produto não existe no estoque
                 produto.setQuantidade(quantidade);  //se não existir, seta a quantidade
                 this.estoque.add(produto);           //e coloca no vetor de estoque
-            }
+                }
                  else if(this.existe(produto.getId())){
                      produto.setQuantidade(produto.getQuantidade() + quantidade); //se já existe no estoque, vai so pegar a quantidade que ja tinha e adicionar a quantidade desejada
                  }
-            
-            }
+                
+        }
            
     }
 
@@ -61,10 +70,12 @@ public class Estoque implements IEstoque {
 
     //metodo para reduzir um produto do estoque
     @Override
-    public void reduzir(Produto produto, int quantidade) {
+    public void reduzir(Produto produto, int quantidade) /*throws PIException*/ {
             if(produto != null){
                 produto.setQuantidade(produto.getQuantidade() - quantidade); //pega a quantidade que tinha antes, e diminui pela desejada
             }
+            //else
+                //throw new PIException(produto.getQuantidade()) // **n achei nenhum metodo que converte id para produto e o contrario
     }
 
     //metodo para mostrar os produtos do estoque pelo tipo dele
@@ -90,12 +101,42 @@ public class Estoque implements IEstoque {
 
     //metodo para mudar o saldo
     @Override
-    public void definirSaldo(double valor) {
-       this.saldo = valor;
+    public void definirSaldo(double valor) throws SNException{
+        if(valor>=0){
+           this.saldo = valor;
+        }else
+            throw new SNException(valor);
     }
     
-    
-    
+    // **metodo para variar o saldo(teste)**
+    // **precisa de saldo nulo???**
+    // **não precisa conferir se o valor vai ser negativo, pois ele definido de acordo com o precoCompra e a quantidade que ja sao checadas 
+    public void adquirirEstoque(String Id, double valor) throws SIException{
+        Estoque estoque = new Estoque();
+        if(valor>0){
+            if(estoque.verSaldo() - valor>0){
+                this.saldo = estoque.verSaldo() - valor;
+            }else
+                throw new SIException(Id, saldo, valor);
+        }
+        
+    }  
 
-    
+    // **mais um teste**
+    public void venderEstoque(double valor) throws VNException{
+        Estoque estoque = new Estoque();
+        if(valor>0)
+            this.saldo = estoque.verSaldo() + valor;
+        else
+            throw new VNException(valor);
+    }
+
+    // **mais um teste**
+    public void venderCartaoEstoque(double valor){
+        Estoque estoque = new Estoque();
+        if(valor>0)
+            this.saldo = estoque.verSaldo() + valor;
+        
+    }
+
 }

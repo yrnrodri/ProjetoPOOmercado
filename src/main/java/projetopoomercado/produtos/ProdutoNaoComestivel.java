@@ -7,7 +7,7 @@ public class ProdutoNaoComestivel extends Produto {
         super(nome, id, marca, preco_compra, tipo);
         this.quantidade = 0;
         this.taxaLucro = 0.0;
-        this.precoVenda = 0.0;
+        this.preco_venda = 0.0;
     }
     
 }
